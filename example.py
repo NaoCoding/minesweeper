@@ -1,0 +1,2 @@
+from minesweeper import minesweeper
+
