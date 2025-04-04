@@ -31,7 +31,7 @@ class minesweeper:
         pass
 
     # This function is used to deal with selection of the board
-    def select(self , x : int , y : int) -> list[list[int]]:
+    def select(self , y : int , x : int) -> list[list[int]]:
         '''
         x : the x coordinate of the selection
         y : the y coordinate of the selection
@@ -55,16 +55,16 @@ class minesweeper:
             return
         
         if self.moves == 0:
-            self.bomb_generation(x , y)
+            self.bomb_generation(y , x)
             self.bomb_positions()
         
-        self.board[x][y] = self.get_value(x , y)
+        self.board[y][x] = self.get_value(y , x)
         self.moves += 1
 
         
         return self.bomb_list
 
-    def bomb_generation(self , x : int , y : int) -> None:
+    def bomb_generation(self , y : int , x : int) -> None:
         '''
         This function is used to generate the bombs on the board
         x : the x coordinate of the selection
@@ -78,19 +78,24 @@ class minesweeper:
 
         possible_list = []
 
-        for i in range(self.width):
-            for j in range(self.height):
-                if i != x and j != y:
+        for i in range(self.height):
+            for j in range(self.width):
+                if i != y and j != x:
                     possible_list.append([i , j])
 
+        
+
         for _ in range(self.bomb_count):
-            target = random.randint(0 , len(possible_list))
+            target = random.randint(0 , len(possible_list) - 1)
+            print(target)
+            print(target , possible_list[target])
+            print(self.width , self.height)
             self.board[possible_list[target][0]][possible_list[target][1]] = '*'
             possible_list.pop(target)
         pass
 
     # This function is used to get the value of the selection
-    def get_value(self , x : int , y : int) -> int:
+    def get_value(self , y : int , x : int) -> int:
         '''
         x : the x coordinate of the selection
         y : the y coordinate of the selection
