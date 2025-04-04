@@ -87,9 +87,6 @@ class minesweeper:
 
         for _ in range(self.bomb_count):
             target = random.randint(0 , len(possible_list) - 1)
-            print(target)
-            print(target , possible_list[target])
-            print(self.width , self.height)
             self.board[possible_list[target][0]][possible_list[target][1]] = '*'
             possible_list.pop(target)
         pass
