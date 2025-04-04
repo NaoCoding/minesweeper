@@ -1,4 +1,4 @@
-from minesweeper import minesweeper
+from minesweeper import Minesweeper
 
-new_game = minesweeper(width=15 , height=15 , bomb_count=7)
+new_game = Minesweeper(width=15 , height=15 , bomb_count=7)
 print(new_game.select(x=0 , y=0))

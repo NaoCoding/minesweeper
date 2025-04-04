@@ -5,7 +5,7 @@
 import random
 
 # I do the task with a class structure since I think it will be more clear and easier to maintain
-class minesweeper:
+class Minesweeper:
 
     # This is the initiaize function of the class, there are also some default numbers for parameters.
     def __init__(self , width : 10 , height : 10 , bomb_count : 10) -> None:
