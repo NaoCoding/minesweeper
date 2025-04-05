@@ -21,6 +21,9 @@ class Minesweeper:
             'F' = flag
         moves : the number of moves made
         '''
+        if width <= 0 or height <= 0 or bomb_count <= 0:
+            raise ValueError('width, height and bomb_count must be positive')
+
         self.width = width
         self.height = height
         self.bomb_count = bomb_count
@@ -37,13 +40,13 @@ class Minesweeper:
         y : the y coordinate of the selection
         '''
 
-        # If the selection is out of range, return
+        # If the selection is out of range, return error message
         if x < 0 or x >= self.width or y < 0 or y >= self.height:
-            return
+            raise ValueError('the selected coordinate is out of range')
         
-        # If the selection is already opened, return
+        # If the selection is already opened, return error message
         if self.board[y][x] != '#':
-            return
+            raise ValueError('the selected coordinate is already opened')
 
         # If the selection is a bomb, game over
         if self.board[y][x] == '*':
